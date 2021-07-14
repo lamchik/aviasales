@@ -1,0 +1,39 @@
+.filter{
+    display: flex;
+}
+
+.filter__text-wrap {
+    width: 168px;
+    height: 50px;
+    border-top: 1px solid #DFE5EC;
+    border-left: 1px solid #DFE5EC;
+    border-bottom: 1px solid #DFE5EC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter__text-wrap:last-child {
+    border-right: 1px solid #DFE5EC;
+    border-radius: 0 5px 5px 0;
+}
+
+
+.filter__text-wrap:first-child {
+    background: #2196F3;
+    border-radius: 5px 0 0 5px;
+}
+
+.filter__text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    line-height: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #4A4A4A;
+}
+
+.filter__text_white {
+    color: #fff;
+}
