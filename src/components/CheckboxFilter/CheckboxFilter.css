@@ -3,9 +3,9 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     border-radius: 5px;
-    padding: 20px;
+    padding: 20px 0 0;
     box-sizing: border-box;
-    height: 260px;
+    height: 256px;
     margin-right: 20px;
 }
 
@@ -16,53 +16,54 @@
     line-height: 12px;
     letter-spacing: 0.5px;
     font-weight: 600;
-    color: rgba(74, 74, 74, 1);
-    margin: 0 0 20px;
-
+    color: rgb(74, 74, 74);
+    padding: 0 0 10px 20px;
+    margin: 0;
 }
 
 .checkboxes__checkbox {
-    width: 20px;
-    height: 20px;
-    margin: 0 10px 0 0;
+    width: 212px;
+    height: 42px;
+    margin: 0;
     opacity: 0;
-    z-index: -1;
     position: absolute;
+    cursor: pointer;
 }
 
 .checkboxes__checkbox + label {
     width: 20px;
     height: 20px;
-    border: 1px solid rgba(154, 187, 206, 1);
+    border: 1px solid rgb(154, 187, 206);
     border-radius: 2px;
     margin-right: 10px;
-
 }
 
 .checkboxes__checkbox:checked + label {
     background-image: url("../../images/Shape.svg");
     background-repeat: no-repeat;
     background-position: center center;
-    border: 1px solid rgba(33, 150, 243, 1);
+    border: 1px solid rgb(33, 150, 243);
 }
 
 .checkboxes__wrapper {
     display: flex;
-    margin: 0 0 20px;
+    padding: 10px 0 10px 20px;
     align-items: center;
 }
 
-.checkboxes__wrapper:last-child {
-    margin: 0;
 
+
+.checkboxes__wrapper:hover {
+    background-color: #F1FCFF;
 }
+
 
 .checkboxes__checkbox-text {
     font-family: 'Open Sans', sans-serif;
     font-size: 13px;
     line-height: 20px;
     font-weight: 400;
-    color: rgba(74, 74, 74, 1);
+    color: rgb(74, 74, 74);
     margin: 0;
 
 }
