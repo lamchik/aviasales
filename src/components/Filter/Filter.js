@@ -1,7 +1,7 @@
 import './Filter.css'
 import '../../fonts/Open_Sans/OpenSans.css'
 
-function Filter () {
+function Filter() {
 
   return (
     <div className='filter'>

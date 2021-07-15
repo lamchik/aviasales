@@ -1,9 +1,10 @@
-.filter{
+.filter {
     display: flex;
+    margin-bottom: 20px;
 }
 
 .filter__text-wrap {
-    width: 168px;
+    width: 166px;
     height: 50px;
     border-top: 1px solid #DFE5EC;
     border-left: 1px solid #DFE5EC;
@@ -11,6 +12,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #fff;
+    cursor: pointer;
 }
 
 .filter__text-wrap:last-child {
