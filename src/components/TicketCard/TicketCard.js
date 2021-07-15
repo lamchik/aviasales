@@ -1,5 +1,5 @@
 import './TicketCard.css'
-import transporterLogo from '../../images/transporterLogo.svg'
+import transporterLogo from '../../images/transporterLogo.png'
 
 function TicketCard() {
   // const {price} = props
