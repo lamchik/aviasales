@@ -1,0 +1,40 @@
+.ticket__info {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.ticket__info-wrap {
+    display: flex;
+    margin-bottom: 10px;
+
+}
+
+.ticket__info-flight {
+    display: flex;
+    flex-direction: column;
+    width: 141px;
+    height: 39px;
+    margin-right: 20px;
+}
+
+.ticket__info-header-text {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    line-height: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: rgba(160, 176, 185, 1);
+}
+
+.ticket__info-text {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    line-height: 21px;
+    font-weight: 600;
+    color: rgba(74, 74, 74, 1)
+}
