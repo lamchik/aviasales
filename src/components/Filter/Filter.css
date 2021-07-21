@@ -9,6 +9,7 @@
     border-top: 1px solid #DFE5EC;
     border-left: 1px solid #DFE5EC;
     border-bottom: 1px solid #DFE5EC;
+    border-right: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,7 +25,6 @@
 
 
 .filter__text-wrap:first-child {
-    background: #2196F3;
     border-radius: 5px 0 0 5px;
 }
 
@@ -42,7 +42,9 @@
     color: #4A4A4A;
 }
 
-
+.filter__text-wrap_blue {
+    background: #2196F3;
+}
 
 
 .filter__text_white {

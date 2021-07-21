@@ -1,18 +1,23 @@
 import './Filter.css'
 
-function Filter() {
+function Filter(props) {
+  const {handleFilterCheepTickets, filteredCheepTickets} = props
+
+  const filterOfCheepTickets = filteredCheepTickets ? 'filter__text-wrap_blue' : ''
+  const textButtonOfCheepTickets = filteredCheepTickets ? 'filter__text_white' : ''
+
 
   return (
     <div className='filter'>
-      <div className='filter__text-wrap'>
-        <p className='filter__text filter__text_white'>Самый дешевый</p>
-      </div>
-      <div className='filter__text-wrap'>
+      <button className={`filter__text-wrap ${filterOfCheepTickets}`} onClick={handleFilterCheepTickets}>
+        <p className={`filter__text ${textButtonOfCheepTickets}`}>Самый дешевый</p>
+      </button>
+      <button className='filter__text-wrap'>
         <p className='filter__text'>Самый быстрый</p>
-      </div>
-      <div className='filter__text-wrap'>
+      </button>
+      <button className='filter__text-wrap'>
         <p className='filter__text'>Оптимальный</p>
-      </div>
+      </button>
     </div>
   )
 }

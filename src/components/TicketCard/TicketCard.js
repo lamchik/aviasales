@@ -40,7 +40,6 @@ function TicketCard(props) {
       timeOfDeparture={segment.date}
       duration={segment.duration}
       stops={segment.stops}
-      countStops={2}
     />
   ))
 
