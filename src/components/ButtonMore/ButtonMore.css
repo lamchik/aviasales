@@ -17,5 +17,8 @@
 
 .button:hover {
     opacity: 0.8;
+}
 
+.button_invisible {
+    display: none;
 }

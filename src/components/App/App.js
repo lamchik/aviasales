@@ -1,7 +1,6 @@
 import './App.css';
 import MainLogo from '../MainLogo/MainLogo'
 import Filter from '../Filter/Filter'
-import TicketCard from "../TicketCard/TicketCard";
 import CheckboxFilter from "../CheckboxFilter/CheckboxFilter";
 import ButtonMore from "../ButtonMore/ButtonMore";
 import MainApi from "../../utils/MainApi";
@@ -9,16 +8,14 @@ import Tickets from "../Tickets/Tickets";
 import {useEffect, useState} from "react";
 
 function App() {
-  const [items, setItems] = useState([])
+  const [tickets, setTickets] = useState([])
+  const [timesButtonPressed, setTimesButtonPressed] = useState(0)
+  const ticketsToRender = tickets.slice(0, 5 + timesButtonPressed*5)
 
   useEffect(() => {
-    console.log('HERE')
     MainApi.getSearchId().then(res => {
-      console.log(res.searchId)
       MainApi.getTickets(res.searchId).then(result => {
-        setItems(result.tickets)
-        console.log(result.tickets)
-        console.log(items)
+        setTickets(result.tickets)
       })
         .catch((err) => {
           console.log(err)
@@ -29,6 +26,10 @@ function App() {
       })
   }, [])
 
+  function handleClick() {
+    setTimesButtonPressed(timesButtonPressed+1)
+  }
+
   return (
     <div className="app">
       <MainLogo/>
@@ -36,11 +37,13 @@ function App() {
         <CheckboxFilter/>
         <div className='app__filter'>
           <Filter/>
-
           <Tickets
-            array={items}
+            tickets={ticketsToRender}
           />
-          <ButtonMore/>
+          <ButtonMore
+            handleClick={handleClick}
+            isVisibleButton={ticketsToRender.length < tickets.length}
+          />
         </div>
       </div>
     </div>

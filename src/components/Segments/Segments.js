@@ -6,6 +6,13 @@ function getTimeFromMinutes(minutes) {
   return hours + 'ч ' + fullMinutes + 'м';
 }
 
+function prependZero(time) {
+  if (time < 10) {
+    return '0' + time
+  }
+  return time
+}
+
 function Segments(props) {
 
   const {origin, destination, timeOfDeparture, duration, stops} = props
@@ -14,14 +21,6 @@ function Segments(props) {
   const departureTime = String(timeOfDeparture).match(/\d\d:\d\d/)
   const departure = new Date(timeOfDeparture)
   const arrival = new Date(+departure + duration * 6e4)
-
-  function prependZero(time) {
-    if (time < 10) {
-      return '0' + time
-    }
-    return time
-  }
-
   const arrivalTime = (
     `${prependZero(arrival.getUTCHours())}:${prependZero(arrival.getUTCMinutes())}`
   )

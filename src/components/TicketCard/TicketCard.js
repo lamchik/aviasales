@@ -8,41 +8,33 @@ import su from '../../images/su.png'
 import mh from '../../images/mh.png'
 import Segments from "../Segments/Segments";
 
+function showCarriersLogo(carrier) {
+  if (carrier === 'S7') {
+    return s7
+  } else if (carrier === 'EY') {
+    return ey
+  } else if (carrier === 'FV') {
+    return fv
+  } else if (carrier === 'EK') {
+    return ek
+  } else if (carrier === 'TG') {
+    return tg
+  } else if (carrier === 'SU') {
+    return su
+  } else if (carrier === 'MH') {
+    return mh
+  } else {
+    return s7
+  }
+}
 
 function TicketCard(props) {
   const {ticket} = props
-  function showCarriersLogo(carrier) {
-    if (carrier === 'S7') {
-      return s7
-    }
-   else if (carrier === 'EY') {
-      return ey
-    }
-   else if (carrier === 'FV') {
-      return fv
-    }
-   else if (carrier === 'EK') {
-      return ek
-    }
-   else if (carrier === 'TG') {
-      return tg
-    }
-   else if (carrier === 'SU') {
-      return su
-    }
-   else if (carrier === 'MH') {
-      return mh
-    }
-   else {
-     return "перевозчик"
-    }
-
-  }
-  console.log(ticket.carrier)
 
   const convertedPrice = ticket.price.toLocaleString('ru-RU')
-  const segments = ticket.segments.map((segment) => (
+  const segments = ticket.segments.map((segment, index) => (
     <Segments
+      key={index}
       origin={segment.origin}
       destination={segment.destination}
       timeOfDeparture={segment.date}

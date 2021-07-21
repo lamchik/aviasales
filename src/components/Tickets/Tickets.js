@@ -2,11 +2,12 @@ import './Tickets.css'
 import TicketCard from "../TicketCard/TicketCard";
 
 function Tickets(props) {
-  const {array} = props
-  console.log(array)
+  const {tickets} = props
+  console.log(tickets)
 
-  const ticket = array.map((ticket) => (
+  const ticket = tickets.map((ticket, i) => (
     <TicketCard
+      key={i}
       ticket={ticket}
     />
   ))
