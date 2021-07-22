@@ -3,7 +3,6 @@ import TicketCard from "../TicketCard/TicketCard";
 
 function Tickets(props) {
   const {tickets} = props
-  console.log(tickets)
 
   const ticket = tickets.map((ticket, i) => (
     <TicketCard
