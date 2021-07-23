@@ -43,7 +43,11 @@ function App() {
   }
 
   function filterByPrice() {
-    if (ticketsFilteredByPrice === false && ticketsFilteredByDuration === false) {
+    if (
+      ticketsFilteredByPrice === false &&
+      ticketsFilteredByDuration === false &&
+      ticketsFilteredByPriceAndDuration === false
+    ) {
       setTicketsFilteredByPrice(true)
       const price = tickets.map(ticket => (
         ticket.price
@@ -53,8 +57,29 @@ function App() {
         return ticket.price === minPrice
       })
       setTickets(cheepTicket)
-    } else if (ticketsFilteredByPrice === false && ticketsFilteredByDuration === true) {
+    } else if (
+      ticketsFilteredByPrice === false &&
+      ticketsFilteredByDuration === true &&
+      ticketsFilteredByPriceAndDuration === false
+    ) {
       setTicketsFilteredByDuration(false)
+      setTicketsFilteredByPrice(true)
+      setTickets(ticketsForFilter)
+      console.log(tickets)
+      const price = ticketsForFilter.map(ticket => (
+        ticket.price
+      ))
+      const minPrice = Math.min(...price)
+      const cheepTicket = ticketsForFilter.filter((ticket) => {
+        return ticket.price === minPrice
+      })
+      setTickets(cheepTicket)
+    } else if (
+      ticketsFilteredByPrice === false &&
+      ticketsFilteredByDuration === false &&
+      ticketsFilteredByPriceAndDuration === true
+    ) {
+      setTicketsFilteredByPriceAndDuration(false)
       setTicketsFilteredByPrice(true)
       setTickets(ticketsForFilter)
       console.log(tickets)
@@ -73,7 +98,11 @@ function App() {
   }
 
   function filterByDuration() {
-    if (ticketsFilteredByDuration === false && ticketsFilteredByPrice === false) {
+    if (
+      ticketsFilteredByDuration === false &&
+      ticketsFilteredByPrice === false &&
+      ticketsFilteredByPriceAndDuration === false
+    ) {
       setTicketsFilteredByDuration(true)
       const segment = segments.map(segment => (
         (segment[0].duration + segment[1].duration)
@@ -83,8 +112,29 @@ function App() {
         return minDuration === ticket.segments[0].duration + ticket.segments[1].duration
       })
       setTickets(fastestTicket)
-    } else if (ticketsFilteredByDuration === false && ticketsFilteredByPrice === true) {
+    } else if (
+      ticketsFilteredByDuration === false &&
+      ticketsFilteredByPrice === true &&
+      ticketsFilteredByPriceAndDuration === false
+    ) {
+      console.log('HERE1')
       setTicketsFilteredByPrice(false)
+      setTicketsFilteredByDuration(true)
+      const segment = segments.map(segment => (
+        (segment[0].duration + segment[1].duration)
+      ))
+      const minDuration = (Math.min(...segment))
+      const fastestTicket = ticketsForFilter.filter((ticket) => {
+        return minDuration === ticket.segments[0].duration + ticket.segments[1].duration
+      })
+      setTickets(fastestTicket)
+    } else if (
+      ticketsFilteredByDuration === false &&
+      ticketsFilteredByPrice === false &&
+      ticketsFilteredByPriceAndDuration === true
+    ) {
+      console.log('HERE2')
+      setTicketsFilteredByPriceAndDuration(false)
       setTicketsFilteredByDuration(true)
       const segment = segments.map(segment => (
         (segment[0].duration + segment[1].duration)
@@ -164,7 +214,6 @@ function App() {
         (segment[0].duration + segment[1].duration)
       ))
       const slice = segment.sort(compareNumbers).slice(0, 10)
-      console.log(ticketsForFilter)
       const filter = ticketsForFilter.filter((ticket) => {
         function isTrue(a) {
           return a === ticket.segments[0].duration + ticket.segments[1].duration
