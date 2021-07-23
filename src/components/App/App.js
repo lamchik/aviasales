@@ -13,10 +13,15 @@ function App() {
   const [timesButtonPressed, setTimesButtonPressed] = useState(0)
   const [ticketsFilteredByPrice, setTicketsFilteredByPrice] = useState(false)
   const [ticketsFilteredByDuration, setTicketsFilteredByDuration] = useState(false)
+  const [ticketsFilteredByPriceAndDuration, setTicketsFilteredByPriceAndDuration] = useState(false)
   const ticketsToRender = tickets.slice(0, 5 + timesButtonPressed * 5)
   const segments = ticketsForFilter.map(ticket => (
     ticket.segments
   ))
+
+  function compareNumbers(a, b) {
+    return a - b;
+  }
 
   useEffect(() => {
     MainApi.getSearchId().then(res => {
@@ -68,7 +73,6 @@ function App() {
   }
 
   function filterByDuration() {
-    setTickets(ticketsForFilter)
     if (ticketsFilteredByDuration === false && ticketsFilteredByPrice === false) {
       setTicketsFilteredByDuration(true)
       const segment = segments.map(segment => (
@@ -95,7 +99,93 @@ function App() {
       setTickets(ticketsForFilter)
     }
   }
-  
+
+  function filterByPriceAndDuration() {
+    if (
+      ticketsFilteredByPrice === false &&
+      ticketsFilteredByDuration === false &&
+      ticketsFilteredByPriceAndDuration === false
+    ) {
+      setTicketsFilteredByPriceAndDuration(true)
+      const segment = segments.map(segment => (
+        (segment[0].duration + segment[1].duration)
+      ))
+      const slice = segment.sort(compareNumbers).slice(0, 10)
+      const filter = ticketsForFilter.filter((ticket) => {
+        function isTrue(a) {
+          return a === ticket.segments[0].duration + ticket.segments[1].duration
+        }
+
+        return slice.some(isTrue)
+      })
+      const price = filter.map(ticket => (
+        ticket.price
+      ))
+      const minPrice = Math.min(...price)
+      const optimalTicket = ticketsForFilter.filter((ticket) => {
+        return ticket.price === minPrice
+      })
+      setTickets(optimalTicket)
+    } else if (
+      ticketsFilteredByPrice === true &&
+      ticketsFilteredByDuration === false &&
+      ticketsFilteredByPriceAndDuration === false
+    ) {
+      setTicketsFilteredByPrice(false)
+      setTicketsFilteredByPriceAndDuration(true)
+      const segment = segments.map(segment => (
+        (segment[0].duration + segment[1].duration)
+      ))
+      const slice = segment.sort(compareNumbers).slice(0, 10)
+      console.log(ticketsForFilter)
+      const filter = ticketsForFilter.filter((ticket) => {
+        function isTrue(a) {
+          return a === ticket.segments[0].duration + ticket.segments[1].duration
+        }
+
+        return slice.some(isTrue)
+      })
+      const price = filter.map(ticket => (
+        ticket.price
+      ))
+      const minPrice = Math.min(...price)
+      const optimalTicket = ticketsForFilter.filter((ticket) => {
+        return ticket.price === minPrice
+      })
+      setTickets(optimalTicket)
+    } else if (
+      ticketsFilteredByPrice === false &&
+      ticketsFilteredByDuration === true &&
+      ticketsFilteredByPriceAndDuration === false
+    ) {
+      setTicketsFilteredByDuration(false)
+      setTicketsFilteredByPriceAndDuration(true)
+      const segment = segments.map(segment => (
+        (segment[0].duration + segment[1].duration)
+      ))
+      const slice = segment.sort(compareNumbers).slice(0, 10)
+      console.log(ticketsForFilter)
+      const filter = ticketsForFilter.filter((ticket) => {
+        function isTrue(a) {
+          return a === ticket.segments[0].duration + ticket.segments[1].duration
+        }
+
+        return slice.some(isTrue)
+      })
+      const price = filter.map(ticket => (
+        ticket.price
+      ))
+      const minPrice = Math.min(...price)
+      const optimalTicket = ticketsForFilter.filter((ticket) => {
+        return ticket.price === minPrice
+      })
+      setTickets(optimalTicket)
+    } else if (ticketsFilteredByPriceAndDuration === true) {
+      setTicketsFilteredByPriceAndDuration(false)
+      setTickets(ticketsForFilter)
+    }
+  }
+
 
   return (
     <div className="app">
@@ -108,6 +198,8 @@ function App() {
             filteredByPrice={ticketsFilteredByPrice}
             handleFilterByDuration={filterByDuration}
             filteredByDuration={ticketsFilteredByDuration}
+            handleFilterByPriceAndDuration={filterByPriceAndDuration}
+            filteredByPriceAndDuration={ticketsFilteredByPriceAndDuration}
           />
           <Tickets
             tickets={ticketsToRender}
