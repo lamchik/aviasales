@@ -14,7 +14,15 @@ function App() {
   const [ticketsFilteredByPrice, setTicketsFilteredByPrice] = useState(false)
   const [ticketsFilteredByDuration, setTicketsFilteredByDuration] = useState(false)
   const [ticketsFilteredByPriceAndDuration, setTicketsFilteredByPriceAndDuration] = useState(false)
+  const [valueAllTickets, setValueAllTickets] = useState(false)
+  const [valueWithoutTransfer, setValueWithoutTransfer] = useState(false)
+  const [valueOneTransfer, setValueOneTransfer] = useState(false)
+  const[valueTwoTransfers, setValueTwoTransfers] = useState(false)
+  const[valueThreeTransfers, setValueThreeTransfers] = useState(false)
+
+
   const ticketsToRender = tickets.slice(0, 5 + timesButtonPressed * 5)
+
 
   //for finding most cheep ticket
   const segments = ticketsForFilter.map(ticket => (
@@ -41,11 +49,13 @@ function App() {
   function compareNumbers(a, b) {
     return a - b;
   }
+
   const fastestTickets = segment.sort(compareNumbers).slice(0, 10)
   const duration = ticketsForFilter.filter((ticket) => {
     function isTrue(number) {
       return number === ticket.segments[0].duration + ticket.segments[1].duration
     }
+
     return fastestTickets.some(isTrue)
   })
   const pricesOfFastestTickets = duration.map(ticket => (
@@ -167,12 +177,59 @@ function App() {
       setTickets(ticketsForFilter)
     }
   }
-  
+
+  const filteredTicketsWithOneTransfer = ticketsForFilter.filter((ticket) => {
+    return ticket.segments[0].stops.length + ticket.segments[1].stops.length === 1
+  })
+  const filteredTicketsWithTwoTransfer = ticketsForFilter.filter((ticket) => {
+    return ticket.segments[0].stops.length + ticket.segments[1].stops.length === 2
+  })
+  const filteredTicketsWithThreeTransfer = ticketsForFilter.filter((ticket) => {
+    return ticket.segments[0].stops.length + ticket.segments[1].stops.length === 3
+  })
+
+  const filteredTicketsWithoutTransfer = ticketsForFilter.filter((ticket) => {
+    return ticket.segments[0].stops.length + ticket.segments[1].stops.length === 0
+  })
+
+
+  function changeValueOneTransfer() {
+    setValueOneTransfer(!valueOneTransfer)
+    valueOneTransfer ? setTickets(ticketsForFilter) : setTickets(filteredTicketsWithOneTransfer)
+  }
+
+  function changeValueTwoTransfer() {
+    setValueOneTransfer(!valueOneTransfer)
+    valueOneTransfer ? setTickets(ticketsForFilter) : setTickets(filteredTicketsWithTwoTransfer)
+  }
+
+  function changeValueThreeTransfer() {
+    setValueOneTransfer(!valueOneTransfer)
+    valueOneTransfer ? setTickets(ticketsForFilter) : setTickets(filteredTicketsWithThreeTransfer)
+  }
+
+  function changeValueWithoutTransfer() {
+    setValueOneTransfer(!valueOneTransfer)
+    valueOneTransfer ? setTickets(ticketsForFilter) : setTickets(filteredTicketsWithoutTransfer)
+  }
+
+
   return (
     <div className="app">
       <MainLogo/>
       <div className='app__filter-wrapper'>
-        <CheckboxFilter/>
+        <CheckboxFilter
+          changeValueOneTransfer={changeValueOneTransfer}
+          changeValueTwoTransfer={changeValueTwoTransfer}
+          changeValueThreeTransfer={changeValueThreeTransfer}
+          changeValueWithoutTransfer={changeValueWithoutTransfer}
+          valueAllTickets={valueAllTickets}
+          valueWithoutTransfer={valueWithoutTransfer}
+          valueOneTransfer={valueOneTransfer}
+          valueTwoTransfer={valueTwoTransfers}
+          valueThreeTransfer={valueThreeTransfers}
+          // changeValueAllTickets={changeValueAllTickets}
+        />
         <div className='app__filter'>
           <Filter
             handleFilterByPrice={filterByPrice}
