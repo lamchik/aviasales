@@ -55,14 +55,14 @@ function App() {
 
 
   //for finding most cheep ticket
-  const segments = ticketsForFilter.map(ticket => (
+  const segments = ticketsToRender.map(ticket => (
     ticket.segments
   ))
-  const price = ticketsForFilter.map(ticket => (
+  const price = ticketsToRender.map(ticket => (
     ticket.price
   ))
   const minPrice = Math.min(...price)
-  const cheepTicket = ticketsForFilter.filter((ticket) => {
+  const cheepTicket = ticketsToRender.filter((ticket) => {
     return ticket.price === minPrice
   })
 
@@ -71,7 +71,7 @@ function App() {
     (segment[0].duration + segment[1].duration)
   ))
   const minDuration = (Math.min(...segment))
-  const fastestTicket = ticketsForFilter.filter((ticket) => {
+  const fastestTicket = ticketsToRender.filter((ticket) => {
     return minDuration === ticket.segments[0].duration + ticket.segments[1].duration
   })
 
@@ -81,7 +81,7 @@ function App() {
   }
 
   const fastestTickets = segment.sort(compareNumbers).slice(0, 10)
-  const duration = ticketsForFilter.filter((ticket) => {
+  const duration = ticketsToRender.filter((ticket) => {
     function isTrue(number) {
       return number === ticket.segments[0].duration + ticket.segments[1].duration
     }
