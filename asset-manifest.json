@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/aviasales/static/css/main.c0f7e770.chunk.css",
+    "main.css": "/aviasales/static/css/main.8617bb61.chunk.css",
     "main.js": "/aviasales/static/js/main.62d99d32.chunk.js",
     "main.js.map": "/aviasales/static/js/main.62d99d32.chunk.js.map",
     "runtime-main.js": "/aviasales/static/js/runtime-main.20fb4a25.js",
@@ -10,7 +10,7 @@
     "static/js/3.2d11caab.chunk.js": "/aviasales/static/js/3.2d11caab.chunk.js",
     "static/js/3.2d11caab.chunk.js.map": "/aviasales/static/js/3.2d11caab.chunk.js.map",
     "index.html": "/aviasales/index.html",
-    "static/css/main.c0f7e770.chunk.css.map": "/aviasales/static/css/main.c0f7e770.chunk.css.map",
+    "static/css/main.8617bb61.chunk.css.map": "/aviasales/static/css/main.8617bb61.chunk.css.map",
     "static/js/2.c0cff5a7.chunk.js.LICENSE.txt": "/aviasales/static/js/2.c0cff5a7.chunk.js.LICENSE.txt",
     "static/media/Logo.2a735bae.svg": "/aviasales/static/media/Logo.2a735bae.svg",
     "static/media/CheckboxFilter.css": "/aviasales/static/media/Shape.b3ce3c21.svg",
@@ -25,7 +25,7 @@
   "entrypoints": [
     "static/js/runtime-main.20fb4a25.js",
     "static/js/2.c0cff5a7.chunk.js",
-    "static/css/main.c0f7e770.chunk.css",
+    "static/css/main.8617bb61.chunk.css",
     "static/js/main.62d99d32.chunk.js"
   ]
 }
