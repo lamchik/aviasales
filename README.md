@@ -1,4 +1,8 @@
-**Тестовое задание в Aviasales**
+**Клиент выдачи билетов Aviasales**
 
-Это страница выдачи билетов со множеством фильтров, настроек и билетов.
-Реализован клиент, который получает случайно сгенерированные билеты от сервера и отрисовывает интерфейс согласно макету (https://github.com/KosyanMedia/test-tasks/raw/f0f60244b045928746188a86ba4f76ddb5515111/aviasales_frontend/Aviasales%20Test%20Task.fig). 
+https://lamchik.github.io/aviasales/
+
+
+Страница выдачи билетов Aviasales со множеством фильтров, настроек и билетов.
+Реализован клиент, который получает случайно сгенерированные билеты от сервера и отрисовывает интерфейс согласно макету 
+(https://github.com/KosyanMedia/test-tasks/raw/f0f60244b045928746188a86ba4f76ddb5515111/aviasales_frontend/Aviasales%20Test%20Task.fig). 
