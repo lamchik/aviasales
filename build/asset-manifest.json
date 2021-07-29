@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/aviasales/static/css/main.c0f7e770.chunk.css",
+    "main.js": "/aviasales/static/js/main.62d99d32.chunk.js",
+    "main.js.map": "/aviasales/static/js/main.62d99d32.chunk.js.map",
+    "runtime-main.js": "/aviasales/static/js/runtime-main.20fb4a25.js",
+    "runtime-main.js.map": "/aviasales/static/js/runtime-main.20fb4a25.js.map",
+    "static/js/2.c0cff5a7.chunk.js": "/aviasales/static/js/2.c0cff5a7.chunk.js",
+    "static/js/2.c0cff5a7.chunk.js.map": "/aviasales/static/js/2.c0cff5a7.chunk.js.map",
+    "static/js/3.2d11caab.chunk.js": "/aviasales/static/js/3.2d11caab.chunk.js",
+    "static/js/3.2d11caab.chunk.js.map": "/aviasales/static/js/3.2d11caab.chunk.js.map",
+    "index.html": "/aviasales/index.html",
+    "static/css/main.c0f7e770.chunk.css.map": "/aviasales/static/css/main.c0f7e770.chunk.css.map",
+    "static/js/2.c0cff5a7.chunk.js.LICENSE.txt": "/aviasales/static/js/2.c0cff5a7.chunk.js.LICENSE.txt",
+    "static/media/Logo.2a735bae.svg": "/aviasales/static/media/Logo.2a735bae.svg",
+    "static/media/CheckboxFilter.css": "/aviasales/static/media/Shape.b3ce3c21.svg",
+    "static/media/ek.fcc14ea0.png": "/aviasales/static/media/ek.fcc14ea0.png",
+    "static/media/ey.19d4987b.png": "/aviasales/static/media/ey.19d4987b.png",
+    "static/media/fv.f9579652.jpeg": "/aviasales/static/media/fv.f9579652.jpeg",
+    "static/media/mh.680a8928.png": "/aviasales/static/media/mh.680a8928.png",
+    "static/media/s7.0c032600.png": "/aviasales/static/media/s7.0c032600.png",
+    "static/media/su.0b483ca9.png": "/aviasales/static/media/su.0b483ca9.png",
+    "static/media/tg.a04f39b6.png": "/aviasales/static/media/tg.a04f39b6.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.20fb4a25.js",
+    "static/js/2.c0cff5a7.chunk.js",
+    "static/css/main.c0f7e770.chunk.css",
+    "static/js/main.62d99d32.chunk.js"
+  ]
+}
