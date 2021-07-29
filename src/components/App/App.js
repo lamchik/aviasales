@@ -23,7 +23,7 @@ function App() {
       valueThreeTransfers: false
     })
 
-  const ticketsToRender = tickets.filter((ticket) => {
+  let filteredTickets = tickets.filter((ticket) => {
     return (checkedTickets.valueWithoutTransfer && ticket.segments[0].stops.length + ticket.segments[1].stops.length === 0)
       || (checkedTickets.valueOneTransfer && ticket.segments[0].stops.length + ticket.segments[1].stops.length === 1)
       || (checkedTickets.valueTwoTransfers && ticket.segments[0].stops.length + ticket.segments[1].stops.length === 2)
@@ -37,8 +37,11 @@ function App() {
         !checkedTickets.valueAllTickets  &&
         ticket.segments[0].stops.length + ticket.segments[1].stops.length >= 0
       )
-  }).slice(0, 5 + timesButtonPressed * 5)
-  console.log(ticketsToRender)
+  })
+
+  const ticketsToRender = filteredTickets.slice(0, 5 + timesButtonPressed * 5)
+
+  console.log('ticketsToRender', ticketsToRender, 'filteredTickets', filteredTickets, 'tickets', tickets)
 
   const changeValueOneTransfer = useCallback(
     (e) => {
@@ -55,14 +58,14 @@ function App() {
 
 
   //for finding most cheep ticket
-  const segments = ticketsToRender.map(ticket => (
+  const segments = filteredTickets.map(ticket => (
     ticket.segments
   ))
-  const price = ticketsToRender.map(ticket => (
+  const price = filteredTickets.map(ticket => (
     ticket.price
   ))
   const minPrice = Math.min(...price)
-  const cheepTicket = ticketsToRender.filter((ticket) => {
+  const cheepTicket = filteredTickets.filter((ticket) => {
     return ticket.price === minPrice
   })
 
@@ -71,7 +74,7 @@ function App() {
     (segment[0].duration + segment[1].duration)
   ))
   const minDuration = (Math.min(...segment))
-  const fastestTicket = ticketsToRender.filter((ticket) => {
+  const fastestTicket = filteredTickets.filter((ticket) => {
     return minDuration === ticket.segments[0].duration + ticket.segments[1].duration
   })
 
@@ -81,18 +84,17 @@ function App() {
   }
 
   const fastestTickets = segment.sort(compareNumbers).slice(0, 10)
-  const duration = ticketsToRender.filter((ticket) => {
+  const duration = filteredTickets.filter((ticket) => {
     function isTrue(number) {
       return number === ticket.segments[0].duration + ticket.segments[1].duration
     }
-
     return fastestTickets.some(isTrue)
   })
   const pricesOfFastestTickets = duration.map(ticket => (
     ticket.price
   ))
   const minPriceOfFastTickets = Math.min(...pricesOfFastestTickets)
-  const optimalTicket = ticketsForFilter.filter((ticket) => {
+  const optimalTicket = filteredTickets.filter((ticket) => {
     return ticket.price === minPriceOfFastTickets
   })
 
@@ -233,7 +235,7 @@ function App() {
           />
           <ButtonMore
             handleClick={handleClick}
-            isVisibleButton={ticketsToRender.length < tickets.length}
+            isVisibleButton={ticketsToRender.length < filteredTickets.length}
           />
         </div>
       </div>
